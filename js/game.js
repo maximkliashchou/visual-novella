@@ -16,7 +16,7 @@ class VisualNovel {
             {
                 background: 'images/background1.jpg',
                 characters: {
-                    left: { image: 'images/character1.webp', visible: true },
+                    left: { image: 'images/character1.png', visible: true },
                     right: { image: '', visible: false }
                 },
                 name: 'Рассказчик',
@@ -26,8 +26,8 @@ class VisualNovel {
             {
                 background: 'images/background1.jpg',
                 characters: {
-                    left: { image: 'images/character1.webp', visible: true },
-                    right: { image: 'images/character2.webp', visible: true }
+                    left: { image: 'images/character1.png', visible: true },
+                    right: { image: 'images/character2.png', visible: true }
                 },
                 name: 'Алиса',
                 text: 'Привет! Я Алиса. Рада встрече!',
@@ -39,8 +39,8 @@ class VisualNovel {
             {
                 background: 'images/background1.jpg',
                 characters: {
-                    left: { image: 'images/character1.webp', visible: false },
-                    right: { image: 'images/character2.webp', visible: true }
+                    left: { image: 'images/character1.png', visible: false },
+                    right: { image: 'images/character2.png', visible: true }
                 },
                 name: 'Алиса',
                 text: 'Отлично! Давай начнем наше приключение!',
@@ -49,8 +49,8 @@ class VisualNovel {
             {
                 background: 'images/background1.jpg',
                 characters: {
-                    left: { image: 'images/character1.webp', visible: false },
-                    right: { image: 'images/character2.webp', visible: true }
+                    left: { image: 'images/character1.png', visible: false },
+                    right: { image: 'images/character2.png', visible: true }
                 },
                 name: 'Алиса',
                 text: 'Я новый персонаж в твоей истории. Приятно познакомиться!',

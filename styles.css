@@ -31,13 +31,11 @@ body {
     transition: transform 0.5s ease, opacity 0.5s ease;
     opacity: 0;
     transform: translateY(20px);
-    pointer-events: none;
 }
 
 .screen.active {
     opacity: 1;
     transform: translateY(0);
-    pointer-events: all;
 }
 
 .background {
@@ -81,6 +79,8 @@ h1 {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     transition: all 0.3s ease;
     margin-top: 20px;
+    text-decoration: none;
+    display: inline-block;
 }
 
 .btn:hover {

@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/visual-novella/static/css/main.f6a4a8b5.css",
+    "main.js": "/visual-novella/static/js/main.d2607163.js",
+    "static/js/453.1e856d4d.chunk.js": "/visual-novella/static/js/453.1e856d4d.chunk.js",
+    "static/media/category2.png": "/visual-novella/static/media/category2.061ef8c50536e607b8ff.png",
+    "static/media/background1.png": "/visual-novella/static/media/background1.eaf48924774db95c32e6.png",
+    "static/media/category3.png": "/visual-novella/static/media/category3.013889044053f209aac6.png",
+    "static/media/back_btn.png": "/visual-novella/static/media/back_btn.17ab1b0309144238a074.png",
+    "static/media/open.png": "/visual-novella/static/media/open.ea3686eb2e7002adc8ad.png",
+    "static/media/login.png": "/visual-novella/static/media/login.ddcd4651e2ed37900d6d.png",
+    "static/media/choose.png": "/visual-novella/static/media/choose.43810810f7f048a933a0.png",
+    "static/media/table.png": "/visual-novella/static/media/table.89c94949140b69cb4214.png",
+    "static/media/category1.png": "/visual-novella/static/media/category1.5f2095aaa5bb86bb3580.png",
+    "static/media/pergament.jpg": "/visual-novella/static/media/pergament.1dd4f24ee10c1289475c.jpg",
+    "static/media/third.jpg": "/visual-novella/static/media/third.936584d7eb59447eca22.jpg",
+    "index.html": "/visual-novella/index.html",
+    "main.f6a4a8b5.css.map": "/visual-novella/static/css/main.f6a4a8b5.css.map",
+    "main.d2607163.js.map": "/visual-novella/static/js/main.d2607163.js.map",
+    "453.1e856d4d.chunk.js.map": "/visual-novella/static/js/453.1e856d4d.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f6a4a8b5.css",
+    "static/js/main.d2607163.js"
+  ]
+}

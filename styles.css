@@ -84,10 +84,9 @@ h1 {
 .table-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
     width: 80%;
-    max-width: 300px;
-    margin: 20px 0;
+    max-width: 150px;
+    margin: 30px auto;
     z-index: 10;
     position: relative;
 }

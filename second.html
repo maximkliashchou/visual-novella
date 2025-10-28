@@ -5,12 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Таинственный мир</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            background: url('images/background2.jpg') no-repeat center center;
+            background-size: contain; /* Картинка полностью видна без обрезки */
+            background-color: #000; /* Цвет фона вокруг картинки */
+            background-attachment: fixed;
+        }
+
+        .clickable-image {
+            width: 200px;
+            height: 200px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            object-fit: cover;
+        }
+        
+        .clickable-image:hover {
+            transform: scale(1.05);
+        }
+        
+        .clickable-image:active {
+            transform: scale(0.95);
+        }
+        
+    </style>
 </head>
 <body>
-    <div class="screen">
-        <div class="background"></div>
-        <h1>Таинственный мир</h1>
-        <button class="btn" onclick="window.location.href='third.html'">Открыть пергамент</button>
+    <div class="">
+        <img src="images/open_btn.png" 
+             alt="Войти" 
+             class="clickable-image"
+             onclick="window.location.href='third.html'">
     </div>
 </body>
 </html>

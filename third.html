@@ -5,29 +5,319 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Выберите число</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            background: url('images/background3.jpg') no-repeat center center;
+            background-size: contain; /* Картинка полностью видна без обрезки */
+            background-color: #000; /* Цвет фона вокруг картинки */
+            background-attachment: fixed;
+        }
+
+        .clickable-image {
+            width: 200px;
+            height: 200px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            object-fit: cover;
+        }
+        
+        .clickable-image:hover {
+            transform: scale(1.05);
+        }
+        
+        .clickable-image:active {
+            transform: scale(0.95);
+        }
+        
+        .table-image {
+            width: 300px;
+            height: auto;
+            margin-top: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            z-index: 10;
+            position: relative;
+        }
+
+        .table-wrapper {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .table-background {
+            position: absolute;
+            width: 360px;
+            height: 360px;
+            object-fit: contain;
+            z-index: 8;
+        }
+
+        .table-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            width: 80%;
+            max-width: 150px;
+            margin: 30px auto;
+            z-index: 10;
+            position: relative;
+            justify-items: center;
+            gap: 10px;
+        }
+        
+        .number-cell {
+            aspect-ratio: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: transparent;
+            border-radius: 10px;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #e5c459; /* Золотой цвет текста */
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border: 2px solid #e5c459;
+            z-index: 10;
+            position: relative;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Тень для лучшей читаемости */
+        }
+        
+        .number-cell:hover {
+            background: rgba(229, 196, 89, 0.1); /* Легкая золотая подсветка */
+            transform: scale(1.05);
+            border-color: #ffd700; /* Более яркий золотой при наведении */
+            color: #ffd700;
+            box-shadow: 0 6px 12px rgba(229, 196, 89, 0.3);
+        }
+  
+
+        /* Стили для всплывающего окна */
+        .popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .popup.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .popup-card {
+            background: url('images/table_img.png') no-repeat center center;
+            background-size: cover; /* Заполняет всю область карточки */
+            border-radius: 20px;
+            padding: 5px;
+            max-width: 500px;
+            width: 90%;
+            height: 700px; /* Фиксированная высота */
+            transform: scale(0.7);
+            transition: transform 0.3s ease;
+            text-align: center;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden; /* Чтобы контент не выходил за границы */
+        }
+
+        .popup-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 10px;
+            margin-bottom: 15px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        /* Поднимаем контент над затемняющим слоем */
+        .popup-card > * {
+            position: relative;
+            z-index: 2;
+        }
+
+        .popup.active .popup-card {
+            transform: scale(1);
+        }
+
+/* Ограничиваем ширину текста */
+        .popup h2 {
+            color: #e5c459;
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+            line-height: 1.3;
+            max-width: 100%; /* Не больше ширины контейнера */
+            word-wrap: break-word; /* Перенос длинных слов */
+            padding: 0 10px; /* Отступы от краев */
+        }
+
+        .popup p {
+            color: #e5c459;
+            line-height: 1.4;
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+            max-width: 80%; /* Не больше ширины контейнера */
+            word-wrap: break-word; /* Перенос длинных слов */
+            padding: 0 15px; /* Отступы от краев */
+            box-sizing: border-box;
+        }
+
+        .popup.active .popup-card {
+            transform: scale(1);
+        }
+
+        .close-btn {
+            width: 130px;
+            height: 130px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            object-fit: cover;
+        }
+
+        .close-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+        }
+
+        .close-btn:active {
+            transform: scale(0.95);
+        }
+        
+    </style>
 </head>
 <body>
-    <div class="screen">
-        <div class="background"></div>
-        <h1>Выберите число</h1>
-        <div class="table-container">
-            <div class="number-cell" onclick="selectNumber(1)">1</div>
-            <div class="number-cell" onclick="selectNumber(2)">2</div>
-            <div class="number-cell" onclick="selectNumber(3)">3</div>
-            <div class="number-cell" onclick="selectNumber(4)">4</div>
-            <div class="number-cell" onclick="selectNumber(5)">5</div>
-            <div class="number-cell" onclick="selectNumber(6)">6</div>
-            <div class="number-cell" onclick="selectNumber(7)">7</div>
-            <div class="number-cell" onclick="selectNumber(8)">8</div>
-            <div class="number-cell" onclick="selectNumber(9)">9</div>
+    <div class="">
+        <img src="images/choose_img.png" 
+             alt="Войти" 
+             class="clickable-image">
+        
+        <div class="table-wrapper">
+
+            <img src="images/table_img.png" alt="Подложка таблицы" class="table-background">
+            <div class="table-container">
+                <div class="number-cell" onclick="showCard(1)">1</div>
+                <div class="number-cell" onclick="showCard(2)">2</div>
+                <div class="number-cell" onclick="showCard(3)">3</div>
+                <div class="number-cell" onclick="showCard(4)">4</div>
+                <div class="number-cell" onclick="showCard(5)">5</div>
+                <div class="number-cell" onclick="showCard(6)">6</div>
+                <div class="number-cell" onclick="showCard(7)">7</div>
+                <div class="number-cell" onclick="showCard(8)">8</div>
+                <div class="number-cell" onclick="showCard(9)">9</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="popup" class="popup">
+        <div class="popup-card">
+            <div id="popup-image" class="popup-image"></div>
+            <h2 id="popup-title"></h2>
+            <p id="popup-description"></p>
+
+            <img src="images/back_btn.png" 
+             alt="Войти" 
+             class="close-btn" onclick="closeCard()">
         </div>
     </div>
 
     <script>
-        function selectNumber(number) {
-            localStorage.setItem('selectedNumber', number);
-            window.location.href = 'fourth.html';
+        const cardData = {
+            1: {
+                title: "Число 1 - Начало",
+                description: "Число 1 символизирует начало, лидерство и новые старты. Это число первопроходцев и новаторов.",
+                image: "linear-gradient(45deg, #ff6b6b, #ffa726)"
+            },
+            2: {
+                title: "Число 2 - Гармония",
+                description: "Число 2 представляет баланс, партнерство и дипломатию. Это число мира и сотрудничества.",
+                image: "linear-gradient(45deg, #42a5f5, #7e57c2)"
+            },
+            3: {
+                title: "Число 3 - Творчество",
+                description: "Число 3 символизирует творчество, самовыражение и оптимизм. Это число художников и мечтателей.",
+                image: "linear-gradient(45deg, #66bb6a, #26c6da)"
+            },
+            4: {
+                title: "Число 4 - Стабильность",
+                description: "Число 4 представляет стабильность, порядок и надежность. Это число строителей и организаторов.",
+                image: "linear-gradient(45deg, #8d6e63, #78909c)"
+            },
+            5: {
+                title: "Число 5 - Свобода",
+                description: "Число 5 символизирует свободу, приключения и перемены. Это число путешественников и исследователей.",
+                image: "linear-gradient(45deg, #ab47bc, #ec407a)"
+            },
+            6: {
+                title: "Число 6 - Забота",
+                description: "Число 6 представляет заботу, семью и ответственность. Это число воспитателей и защитников.",
+                image: "linear-gradient(45deg, #26a69a, #9ccc65)"
+            },
+            7: {
+                title: "Число 7 - Мудрость",
+                description: "Число 7 символизирует мудрость, знание и духовность. Это число философов и ученых.",
+                image: "linear-gradient(45deg, #5c6bc0, #42a5f5)"
+            },
+            8: {
+                title: "Число 8 - Изобилие",
+                description: "Число 8 представляет изобилие, успех и власть. Это число бизнесменов и лидеров.",
+                image: "linear-gradient(45deg, #ffa726, #f57c00)"
+            },
+            9: {
+                title: "Число 9 - Завершение",
+                description: "Число 9 символизирует завершение, гуманизм и служение. Это число филантропов и учителей.",
+                image: "linear-gradient(45deg, #ef5350, #ab47bc)"
+            }
+        };
+
+        function showCard(number) {
+            const popup = document.getElementById('popup');
+            const popupImage = document.getElementById('popup-image');
+            const popupTitle = document.getElementById('popup-title');
+            const popupDescription = document.getElementById('popup-description');
+
+            if (cardData[number]) {
+                const data = cardData[number];
+                popupImage.style.background = data.image;
+                popupTitle.textContent = data.title;
+                popupDescription.textContent = data.description;
+                popup.classList.add('active');
+            }
         }
+
+        function closeCard() {
+            const popup = document.getElementById('popup');
+            popup.classList.remove('active');
+        }
+
+        // Закрытие по клику вне карточки
+        document.getElementById('popup').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeCard();
+            }
+        });
+
+        // Закрытие по ESC
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeCard();
+            }
+        });
     </script>
 </body>
 </html>

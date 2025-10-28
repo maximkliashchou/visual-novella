@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="screen active">
+    <div class="screen">
         <div class="background"></div>
         <h1>Выберите число</h1>
         <div class="table-container">
@@ -23,12 +23,9 @@
         </div>
     </div>
 
-    <script src="script.js"></script>
     <script>
         function selectNumber(number) {
-            // Сохраняем выбранное число в localStorage
             localStorage.setItem('selectedNumber', number);
-            // Переходим на четвертый экран
             window.location.href = 'fourth.html';
         }
     </script>

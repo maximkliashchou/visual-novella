@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/visual-novella/static/css/main.f6a4a8b5.css",
-    "main.js": "/visual-novella/static/js/main.d2607163.js",
+    "main.js": "/visual-novella/static/js/main.e9c7f723.js",
     "static/js/453.1e856d4d.chunk.js": "/visual-novella/static/js/453.1e856d4d.chunk.js",
     "static/media/category2.png": "/visual-novella/static/media/category2.061ef8c50536e607b8ff.png",
     "static/media/background1.png": "/visual-novella/static/media/background1.eaf48924774db95c32e6.png",
@@ -16,11 +16,11 @@
     "static/media/third.jpg": "/visual-novella/static/media/third.936584d7eb59447eca22.jpg",
     "index.html": "/visual-novella/index.html",
     "main.f6a4a8b5.css.map": "/visual-novella/static/css/main.f6a4a8b5.css.map",
-    "main.d2607163.js.map": "/visual-novella/static/js/main.d2607163.js.map",
+    "main.e9c7f723.js.map": "/visual-novella/static/js/main.e9c7f723.js.map",
     "453.1e856d4d.chunk.js.map": "/visual-novella/static/js/453.1e856d4d.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.f6a4a8b5.css",
-    "static/js/main.d2607163.js"
+    "static/js/main.e9c7f723.js"
   ]
 }

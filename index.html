@@ -3,31 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Моя Визуальная Новелла</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Многоэкранное приложение</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div id="game-container">
-        <div id="background-container">
-            <img id="background" src="" alt="Фон">
-        </div>
-        
-        <div id="character-container">
-            <img id="character-left" class="character" src="" alt="Персонаж слева">
-            <img id="character-right" class="character" src="" alt="Персонаж справа">
-        </div>
-        
-        <div id="text-container">
-            <div id="name-box"></div>
-            <div id="text-box"></div>
-            <button id="next-button">Далее</button>
-        </div>
-        
-        <div id="choices-container" class="hidden">
-            <!-- Кнопки выбора будут добавляться здесь -->
+    <!-- Первый экран -->
+    <div id="screen1" class="screen active">
+        <div class="background"></div>
+        <h1>Добро пожаловать</h1>
+        <button class="btn" onclick="showScreen(2)">Войти</button>
+    </div>
+
+    <!-- Второй экран -->
+    <div id="screen2" class="screen">
+        <div class="background"></div>
+        <h1>Таинственный мир</h1>
+        <button class="btn" onclick="showScreen(3)">Открыть пергамент</button>
+    </div>
+
+    <!-- Третий экран -->
+    <div id="screen3" class="screen">
+        <div class="background"></div>
+        <h1>Выберите число</h1>
+        <div class="table-container">
+            <div class="number-cell" onclick="selectNumber(1)">1</div>
+            <div class="number-cell" onclick="selectNumber(2)">2</div>
+            <div class="number-cell" onclick="selectNumber(3)">3</div>
+            <div class="number-cell" onclick="selectNumber(4)">4</div>
+            <div class="number-cell" onclick="selectNumber(5)">5</div>
+            <div class="number-cell" onclick="selectNumber(6)">6</div>
+            <div class="number-cell" onclick="selectNumber(7)">7</div>
+            <div class="number-cell" onclick="selectNumber(8)">8</div>
+            <div class="number-cell" onclick="selectNumber(9)">9</div>
         </div>
     </div>
 
-    <script src="js/game.js"></script>
+    <!-- Четвертый экран -->
+    <div id="screen4" class="screen">
+        <div class="background"></div>
+        <h1>Тайна числа</h1>
+        <div id="card" class="card">
+            <!-- Карточка будет заполняться динамически -->
+        </div>
+        <button class="btn back-btn" onclick="showScreen(3)">Назад</button>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
